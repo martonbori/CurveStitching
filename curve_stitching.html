@@ -1,0 +1,63 @@
+<html>
+<head>
+	<script src="Pos_class.js"></script>
+	<script src="Point_class.js"></script>
+	<script src="Line_class.js"></script>
+	<script src="Expression_class.js"></script>
+	<script src="Pattern_class.js"></script>
+	<script src="myCanvas_class.js"></script>
+	<script src="Canvas2SVG.js"></script>
+	<script src="draw_UI.js" defer></script>
+
+	<link rel="stylesheet" type="text/css" href="draw.css">
+	<title>Curve stitching!</title>
+</head>
+<body>
+	<p id="log"></p>
+	<div id="canvasArea">
+		<canvas id="canvas" width="1000" height="600"></canvas>
+	</div>
+	<div id="toolbarArea">
+		<div id="toolbar">
+			<b>Sokszög: </b><input id="polygonN" type="number" value="10" max="100" min="3" step="1" ></br>
+			<b>Oldalhossz: </b><input id="polygonSize" type="number" value="300" max="1000" min="10" step="10" > </br>
+			<b>Pontok száma </b>(oldalanként): <input id="pointCount" type="number" value="20" max="50" min="5" step="5" ></br>			
+			</br><b>Animáció sebessége:</b> <input id="animationSpeed" type="number" value="0.05" min="0.01" max="1" step="0.01"></br>
+			<input id="animateBtn" type="button" value="Animáció indítása!"><input id="drawBtn" type="button" value="Minta kirajzolása!">
+		<div>
+		</br>
+		<div id="settings">
+			<b>Sandbox mód: </b><input id="sandBoxChk" type="checkbox"></br>
+			<b>Automatikus méret: </b><input id="autoSizeChk" type="checkbox" checked> </br>
+			<b>Több egyenes egy pontból: </b><input id="multipleLinesFromPointChk" type="checkbox"> </br>
+		<div>
+		</br>
+		<div id="algorithms">
+			<div id="multipleLinesLabel" style="display:none;">
+				<span><b>L</b> (Adott pontból kiinduló egyenesek száma)</span></br>
+				L=<input id="lineCntFromPoint" type="number" value="2" min="1" step="1"></br>
+				</br><span><b>l</b>: Adott egyenes sorszáma az azonos kezdöpontú egyenesek között</span> 
+			</div>
+			<span><b>n</b>: Poligon csúcsszáma</span></br>
+			<span><b>e</b>: Adott él sorszáma</span></br>
+			<span><b>x</b>: Adott pont sorszáma</span></br>
+			<b>Oldalváltás algoritmusa: </b></br>f(x)=<input id="edgePatternTb" type="text" value="e+x"></br>
+			<b>Számozás algoritmusa: </b></br>f(x)=<input id="numPatternTb" type="text" value="x"> </br>
+			<input id="patternSubmit" type="button" value="Algoritmus kiértékelése!">
+		<div>
+		</br>
+		<div id="misc">
+			<b>Egyéb</b></br>
+			<b>Vonalhossz: </b><input id="lineLength" type="number" value="100" min="1" max="200" step="1">%</br>
+			<b>Számozás típusa: </b>
+					<select id="numbering" name="numbering">
+						<option value="byEdges">Élenként</option>
+						<option value="circle">Körbe</option>
+					</select></br>
+			<b>Számozás megjelenítése: </b><input id="showNumbering" type="checkbox"></br>
+		<div>
+		</br>
+		<a href="blank" id="svgDownloadLink" >SVG letöltés</a>
+	</div>
+</body>
+</html>
