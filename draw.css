@@ -1,0 +1,27 @@
+#canvasArea {
+	display:inline;
+	max-width: 75%;
+}
+#canvas {
+	display:inline;
+	border-style:solid;
+	float:left;
+/*	width: 1000px;
+	max-height: 600px;*/
+}
+
+#toolbarArea {
+	display:inline;
+	float:left;
+	max-width:22%;
+	margin-top:50px;
+	margin-left:20px;
+}
+#toolbar {
+	display:inline-block;
+	margin:auto;
+	border: 1px solid #73AD21;	
+}
+input {
+	margin-top:5px;
+}
