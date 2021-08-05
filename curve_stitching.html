@@ -1,4 +1,4 @@
-<html>
+<html lang="">
 <head>
 	<script src="Pos_class.js"></script>
 	<script src="Point_class.js"></script>
@@ -7,6 +7,7 @@
 	<script src="Pattern_class.js"></script>
 	<script src="myCanvas_class.js"></script>
 	<script src="Canvas2SVG.js"></script>
+	<script src="fillPattern.js"></script>
 	<script src="draw_UI.js" defer></script>
 
 	<link rel="stylesheet" type="text/css" href="draw.css">
@@ -19,18 +20,18 @@
 	</div>
 	<div id="toolbarArea">
 		<div id="toolbar">
-			<b>Sokszög: </b><input id="polygonN" type="number" value="10" max="100" min="3" step="1" ></br>
+			<label for="polygonN"><b>Sokszög: </b></label><input id="polygonN" type="number" value="10" max="100" min="3" step="1" ></br>
 			<b>Oldalhossz: </b><input id="polygonSize" type="number" value="300" max="1000" min="10" step="10" > </br>
 			<b>Pontok száma </b>(oldalanként): <input id="pointCount" type="number" value="20" max="50" min="5" step="5" ></br>			
 			</br><b>Animáció sebessége:</b> <input id="animationSpeed" type="number" value="0.05" min="0.01" max="1" step="0.01"></br>
 			<input id="animateBtn" type="button" value="Animáció indítása!"><input id="drawBtn" type="button" value="Minta kirajzolása!">
-		<div>
+		</div>
 		</br>
 		<div id="settings">
 			<b>Sandbox mód: </b><input id="sandBoxChk" type="checkbox"></br>
 			<b>Automatikus méret: </b><input id="autoSizeChk" type="checkbox" checked> </br>
 			<b>Több egyenes egy pontból: </b><input id="multipleLinesFromPointChk" type="checkbox"> </br>
-		<div>
+		</div>
 		</br>
 		<div id="algorithms">
 			<div id="multipleLinesLabel" style="display:none;">
@@ -44,7 +45,7 @@
 			<b>Oldalváltás algoritmusa: </b></br>f(x)=<input id="edgePatternTb" type="text" value="e+x"></br>
 			<b>Számozás algoritmusa: </b></br>f(x)=<input id="numPatternTb" type="text" value="x"> </br>
 			<input id="patternSubmit" type="button" value="Algoritmus kiértékelése!">
-		<div>
+		</div>
 		</br>
 		<div id="misc">
 			<b>Egyéb</b></br>
@@ -55,7 +56,7 @@
 						<option value="circle">Körbe</option>
 					</select></br>
 			<b>Számozás megjelenítése: </b><input id="showNumbering" type="checkbox"></br>
-		<div>
+		</div>
 		</br>
 		<a href="blank" id="svgDownloadLink" >SVG letöltés</a>
 	</div>

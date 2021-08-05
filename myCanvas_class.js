@@ -85,7 +85,7 @@ class myCanvas {
 			for(var j=0;j<this.pointsPerEdges;j++) {
 				var pointX=this.points[i][j].pos.x, pointY=this.points[i][j].pos.y;
 				context.moveTo(pointX+Point.R,pointY);
-				context.arc(pointX,pointY,Point.R,0,2*Math.PI,true);
+				//context.arc(pointX,pointY,Point.R,0,2*Math.PI,true);
 				if(this.numbersVisible) {
 					context.save();
 					context.translate(pointX,pointY);
@@ -95,9 +95,39 @@ class myCanvas {
 				}				
 			}
 		}
-		context.stroke();	
+		context.stroke();
 	}
 	drawNumber(context, edge, point) {
+	}
+	fillPattern(x,y) {
+		var temp = this.ctx.fillStyle;
+		this.ctx.fillStyle = "rgba(0,255,0,1)";
+		var green = false;
+		var line = false;
+		var w = this.getWidth();
+		var h = this.getHeight();
+		var imgData = this.ctx.getImageData(0,0,w,h);
+		for(var col=5;col<w-5;col++) {
+			for (var row = 5; row < h-5; row++) {
+				var px = (row*(w*4))+(col*4);
+				if (imgData.data[px+3] > 100 && imgData.data[px] == 0 && imgData.data[px+1] == 0 && imgData.data[px+2] == 0) {
+					//console.log("row:"+row + " col:"+col);
+
+					if(!line) {
+						green = !green;
+						if (green)
+							this.ctx.fillStyle = "rgba(0,255,0,1)";
+						else
+							this.ctx.fillStyle = "rgba(255,0,0,0)";
+						line = true;
+					}
+				} else {
+					this.ctx.fillRect(col, row, 1, 1);
+					line = false;
+				}
+			}
+		}
+		this.ctx.fillStyle = temp;
 	}
 	getEdgeAngle(edge) {
 		var deltaX=edge.end.x-edge.start.x;
@@ -155,7 +185,7 @@ class myCanvas {
 		return point;
 	}
 
-        drawLines() {
+	drawLines() {
 		var context=this.ctx;
 		for(var i=0;i<this.lines.length;i++) {
 			var line=this.lines[i];
@@ -169,7 +199,8 @@ class myCanvas {
 				context.lineTo(endX,endY);
 			}
 			context.stroke();
-		}		
+		}
+
 	}
 	animateByLines(timestamp) {
 		var anim=this.Animator;
@@ -263,7 +294,8 @@ class myCanvas {
 	}
 	
 	drawPattern() {
-		this.drawLines();		
+		this.drawLines();
+
 	}
 	animatePattern(speed=0.05) {
 		this.Animator.speed=speed;
@@ -309,6 +341,8 @@ class myCanvas {
 			
 			this.canvas.addEventListener("mousemove", this.mouseMoveListener.bind(this));	
 		}
+		this.fillPattern(0,0);
+
 	}
 	clear() {
 		this.initDraw();	
