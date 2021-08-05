@@ -2,14 +2,13 @@ class Line {
 	constructor(start, end) {
 		this.start=start;
 		this.end=end;	
-		this.m = (start.y - end.y) / (start.x - end.x);
-		let b1 = start.y - (this.m * start.x);
-		let b2 = end.y - (this.m * end.x);
-		this.b = (b1+b2)/2;
-		console.log("y = " + this.m +"x + " + this.b);
 	}
 
 	isOnLine(pos) {
-		return pos.y === Math.floor((this.m * pos.x) +this.b);
+		let m = (this.start.pos.y - this.end.pos.y) / (this.start.pos.x - this.end.pos.x);
+		let b1 = this.start.pos.y - (m * this.start.pos.x);
+		let b2 = this.end.pos.y - (m * this.end.pos.x);
+		let b = (b1+b2)/2;
+		return (pos.y <= Math.floor((m * pos.x) +b)+2) && (pos.y >= Math.floor((m * pos.x) +b)-2);
 	}
 }

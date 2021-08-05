@@ -109,19 +109,17 @@ class myCanvas {
 		var imgData = this.ctx.getImageData(0,0,w,h);
 		for(var col=5;col<w-5;col++) {
 			for (var row = 5; row < h-5; row++) {
-				var px = (row*(w*4))+(col*4);
-				if (imgData.data[px+3] > 100 && imgData.data[px] == 0 && imgData.data[px+1] == 0 && imgData.data[px+2] == 0) {
-					//console.log("row:"+row + " col:"+col);
-
+				if (imgData.data[(row * (w * 4)) + (col * 4) + 3] > 100) {
 					if(!line) {
+						console.log("row:" + row + " col:" + col);
 						green = !green;
-						if (green)
-							this.ctx.fillStyle = "rgba(0,255,0,1)";
-						else
-							this.ctx.fillStyle = "rgba(255,0,0,0)";
 						line = true;
 					}
 				} else {
+					if (green)
+						this.ctx.fillStyle = "rgba(0,255,0,1)";
+					else
+						this.ctx.fillStyle = "rgba(255,0,0,0)";
 					this.ctx.fillRect(col, row, 1, 1);
 					line = false;
 				}
